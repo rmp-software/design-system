@@ -1,0 +1,75 @@
+{
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:storybook/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["prettier", "eslint-plugin-import-helpers", "@typescript-eslint"],
+  "rules": {
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./src/core",
+            "from": "./src/components"
+          },
+          {
+            "target": "./src/core",
+            "from": "./src/domain"
+          },
+          {
+            "target": "./src/core",
+            "from": "./src/pages"
+          },
+          {
+            "target": "./src/domain",
+            "from": "./src/pages"
+          },
+          {
+            "target": "./src/components",
+            "from": "./src/pages"
+          }
+        ]
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "module",
+          "/^(domain|core|pages|components|__tests__|stories)/",
+          ["parent", "sibling", "index"]
+        ]
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@testing-library/react",
+            "message": "Please import all testing utils from __tests__/utils.tsx"
+          }
+        ]
+      }
+    ],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-use-before-define": "off",
+    "space-before-function-paren": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
+    "react/display-name": "off",
+    "no-unused-expressions": "error",
+    "no-param-reassign": "error",
+    "eqeqeq": "error",
+    "no-nested-ternary": "error"
+  }
+}
